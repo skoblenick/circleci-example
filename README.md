@@ -44,3 +44,12 @@ __or__
 ```
 npm run circleci
 ```
+
+## Tests
+
+Run locally
+
+```
+docker-compose up -d
+npm test
+```

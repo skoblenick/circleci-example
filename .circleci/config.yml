@@ -9,6 +9,11 @@ executors:
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD=yes
           - MYSQL_DATABASE=test # doesn't create the default database like i expect in circle
+      - image: elasticsearch:7.0.1
+        environment:
+          - bootstrap.memory_lock=true
+          - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+          - discovery.type=single-node
 
 jobs:
   build:
@@ -17,6 +22,7 @@ jobs:
       - checkout
       - run: npm install
       - run: npx wait-on tcp:localhost:3306 --timeout 90000
+      - run: npx wait-on tcp:localhost:9200 --timeout 120000
       - run: npm test
 
 workflows:

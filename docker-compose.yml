@@ -9,3 +9,17 @@ services:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=test
+  es:
+    image: elasticsearch:7.0.1
+    ports: # Expose Elasticsearch ports
+      - "9300:9300"
+      - "9200:9200"
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    volumes: # Persist ES data in seperate "esdata" volume
+      - esdata:/usr/share/elasticsearch/data
+
+volumes:
+  esdata:

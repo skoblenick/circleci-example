@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/skoblenick/circleci-example#readme",
   "dependencies": {
+    "elasticsearch": "^16.0.0",
     "mocha": "^6.1.4",
     "mysql2": "^1.6.5"
   },
