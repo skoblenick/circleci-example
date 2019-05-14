@@ -1,0 +1,16 @@
+# https://github.com/mochajs/mocha/blob/master/example/config/.mocharc.yml
+diff: true
+bail: false
+exit: true # https://github.com/babel/website/issues/941
+extension:
+  - js
+package: ./package.json
+reporter: spec
+require:
+  - '@babel/polyfill'
+  - '@babel/register'
+  - './test/mocha-ignore.js'
+slow: 75
+spec: test/**/*.test.js
+timeout: 60000
+ui: bdd
